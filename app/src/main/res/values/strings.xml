@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TwitterCloneFragment</string>
+    <string name="have_an_account_already">Have an account already?</string>
+    <string name="create_account">Create Account</string>
+    <string name="log_in">Log in</string>
+</resources>
