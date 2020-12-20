@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 
@@ -15,6 +16,7 @@ class StartFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.hide()
         return inflater.inflate(R.layout.fragment_start, container, false)
     }
 
@@ -29,5 +31,10 @@ class StartFragment: Fragment() {
 //            startActivity(Intent(this, CreateAccount::class.java))
             view.findNavController().navigate(R.id.action_startFragment_to_loginFragment)
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity).supportActionBar?.show()
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_logo"
+        android:icon="@drawable/twitter_logo"
+        app:showAsAction="always"
+        android:title="logo"
+        />
+    <item
+        android:id="@+id/createAccountFragment"
+        android:title="Sign up"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_about"
+        android:title="About"
+        app:showAsAction="never" />
+    <item
+        android:title="Proxy"
+        app:showAsAction="never" />
+</menu>
