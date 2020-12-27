@@ -3,4 +3,13 @@
     <string name="have_an_account_already">Have an account already?</string>
     <string name="create_account">Create Account</string>
     <string name="log_in">Log in</string>
+
+    <string name="string1">My first list item</string>
+    <string name="string2">Colombo</string>
+    <string name="string3">Android</string>
+    <string name="string4">Mars</string>
+    <string name="string5">LinearLayout</string>
+    <string name="string6">FragmentLayout</string>
+    <string name="string7">ConstraintLayout</string>
+
 </resources>

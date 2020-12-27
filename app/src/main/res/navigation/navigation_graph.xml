@@ -26,5 +26,14 @@
         android:id="@+id/loginFragment"
         android:name="com.kalan.android.twitterclonefragment.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_tweetsFragment"
+            app:destination="@id/tweetsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tweetsFragment"
+        android:name="com.kalan.android.twitterclonefragment.TweetsFragment"
+        android:label="TweetsFragment"
+        tools:layout="@layout/fragment_tweets"/>
 </navigation>
