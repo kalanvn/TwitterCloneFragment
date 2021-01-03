@@ -30,10 +30,30 @@
         <action
             android:id="@+id/action_loginFragment_to_tweetsFragment"
             app:destination="@id/tweetsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_tweetsFragmentWithDiffUtil"
+            app:destination="@id/tweetsFragmentWithDiffUtil" />
     </fragment>
     <fragment
         android:id="@+id/tweetsFragment"
         android:name="com.kalan.android.twitterclonefragment.TweetsFragment"
         android:label="TweetsFragment"
-        tools:layout="@layout/fragment_tweets"/>
+        tools:layout="@layout/fragment_tweets">
+        <action
+            android:id="@+id/action_tweetsFragment_to_tweetDetailsFragment"
+            app:destination="@id/tweetDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tweetDetailsFragment"
+        android:name="com.kalan.android.twitterclonefragment.TweetDetailsFragment"
+        android:label="TweetDetailsFragment"
+        tools:layout="@layout/fragment_tweetdetails"/>
+    <fragment
+        android:id="@+id/tweetsFragmentWithDiffUtil"
+        android:name="com.kalan.android.twitterclonefragment.TweetsFragmentWithDiffUtil"
+        android:label="TweetsFragmentWithDiffUtil" >
+        <action
+            android:id="@+id/action_tweetsFragmentWithDiffUtil_to_tweetDetailsFragment"
+            app:destination="@id/tweetDetailsFragment" />
+    </fragment>
 </navigation>

@@ -5,12 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kalan.android.twitterclonefragment.model.TweetData
 
-class TweetsAdapter (val  dataSet: List<TweetData>,
-                     val tweetListItemClickListener: TweetListItemClickListener)
-    : RecyclerView.Adapter<TweetsAdapter.TweetsViewHolder>() {
+class TweetsAdapterWithDiffUtil (val tweetListItemClickListener: TweetListItemClickListenerWithDiffUtil)
+    : ListAdapter<TweetData, TweetsAdapterWithDiffUtil.TweetsViewHolder>(TweetListItemDiffCallback()) {
     class TweetsViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView){
         val textViewListItem : TextView = listItemView.findViewById(R.id.textViewListItem)
         val imageViewListItem : ImageView = listItemView.findViewById(R.id.imageViewListItem)
@@ -22,27 +23,33 @@ class TweetsAdapter (val  dataSet: List<TweetData>,
     }
 
     override fun onBindViewHolder(holder: TweetsViewHolder, position: Int) {
-        holder.textViewListItem.text = dataSet[position].tweetText
+        holder.textViewListItem.text = getItem(position).tweetText
 //        holder.textViewListItem.setText(dataSet[position].tweetTextId)
         holder.textViewListItem.setOnClickListener {
-            tweetListItemClickListener.textViewListItemClickListener(dataSet[position].tweetText)
+            tweetListItemClickListener.textViewListItemClickListener(getItem(position).tweetText)
         }
-        holder.imageViewListItem.setImageResource(dataSet[position].tweetImageId)
+        holder.imageViewListItem.setImageResource(getItem(position).tweetImageId)
         holder.imageViewListItem.setOnClickListener {
             tweetListItemClickListener.imageViewListItemClickListener()
         }
         holder.itemView.setOnClickListener {
-            tweetListItemClickListener.listItemClickListener(dataSet[position])
+            tweetListItemClickListener.listItemClickListener(getItem(position))
         }
-    }
-
-    override fun getItemCount(): Int {
-        return dataSet.size
     }
 }
 
-interface TweetListItemClickListener {
+interface TweetListItemClickListenerWithDiffUtil {
     fun listItemClickListener(tweetData: TweetData)
     fun textViewListItemClickListener(textString : String)
     fun imageViewListItemClickListener()
+}
+
+class TweetListItemDiffCallback : DiffUtil.ItemCallback<TweetData> () {
+    override fun areItemsTheSame(oldItem: TweetData, newItem: TweetData): Boolean {
+        return oldItem.tweetText.equals(newItem.tweetText)
+    }
+
+    override fun areContentsTheSame(oldItem: TweetData, newItem: TweetData): Boolean {
+        return oldItem == newItem
+    }
 }

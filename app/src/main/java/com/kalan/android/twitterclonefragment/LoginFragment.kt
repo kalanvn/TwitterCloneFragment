@@ -21,7 +21,11 @@ class LoginFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<Button>(R.id.buttonLoginIn).setOnClickListener {
-            view.findNavController().navigate(R.id.action_loginFragment_to_tweetsFragment)
+            //With RecyclerView.Adapter
+//            view.findNavController().navigate(R.id.action_loginFragment_to_tweetsFragment)
+
+            //With ListAdapter
+            view.findNavController().navigate(R.id.action_loginFragment_to_tweetsFragmentWithDiffUtil)
         }
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
