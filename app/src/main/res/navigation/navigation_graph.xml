@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/tweetsFragment"
-        android:name="com.kalan.android.twitterclonefragment.TweetsFragment"
+        android:name="com.kalan.android.twitterclonefragment.tweets.TweetsFragment"
         android:label="TweetsFragment"
         tools:layout="@layout/fragment_tweets">
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/tweetDetailsFragment"
-        android:name="com.kalan.android.twitterclonefragment.TweetDetailsFragment"
+        android:name="com.kalan.android.twitterclonefragment.tweetdetails.TweetDetailsFragment"
         android:label="TweetDetailsFragment"
         tools:layout="@layout/fragment_tweetdetails"/>
     <fragment
