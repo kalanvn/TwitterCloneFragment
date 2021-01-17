@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_tweetsFragment_to_tweetDetailsFragment"
             app:destination="@id/tweetDetailsFragment" />
+        <action
+            android:id="@+id/action_tweetsFragment_to_tweetPostFragment"
+            app:destination="@id/tweetPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/tweetDetailsFragment"
@@ -55,5 +58,16 @@
         <action
             android:id="@+id/action_tweetsFragmentWithDiffUtil_to_tweetDetailsFragment"
             app:destination="@id/tweetDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tweetPostFragment"
+        android:name="com.kalan.android.twitterclonefragment.tweetpost.TweetPostFragment"
+        android:label="TweetPostFragment"
+        tools:layout="@layout/fragment_tweetpost">
+        <action
+            android:id="@+id/action_tweetPostFragment_to_tweetsFragment"
+            app:destination="@id/tweetsFragment"
+            app:popUpTo="@id/tweetsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
