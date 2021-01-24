@@ -46,7 +46,7 @@ class TweetsFragment : Fragment() {
         val tweetDBAdapter = TweetsAdapterDB(object : TweetDBListItemClickListener {
             override fun listItemClickListener(tweet: Tweet) {
                 Toast.makeText(activity, "${tweet.text} clicked", Toast.LENGTH_SHORT).show()
-                val bundle = bundleOf("tweetName" to tweet.text)
+                val bundle = bundleOf("tweetId" to tweet.tweetId)
                 view.findNavController().navigate(R.id.action_tweetsFragment_to_tweetDetailsFragment, bundle)
             }
             override fun textViewListItemClickListener(textString: String) {}
@@ -57,6 +57,7 @@ class TweetsFragment : Fragment() {
         recyclerViewTweets.layoutManager = layoutManagerCustom
 
         viewModel.allTweet.observe(viewLifecycleOwner, Observer {
+            //List<Tweet>
             newList ->
             tweetDBAdapter.dataSet = newList
 //            it?.let {

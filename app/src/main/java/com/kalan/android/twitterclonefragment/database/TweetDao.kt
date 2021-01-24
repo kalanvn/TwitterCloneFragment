@@ -12,7 +12,11 @@ interface TweetDao {
 
     //Read
     @Query("SELECT * from Tweet WHERE tweetId = :key")
-    fun get(key: Long): Tweet?
+    suspend fun get(key: Long): Tweet?
+
+    //Read
+    @Query("SELECT * from Tweet WHERE tweetId = :key")
+    fun getLive(key: Long): LiveData<Tweet?>
 
     @Query("SELECT * from Tweet ORDER BY tweetId DESC")
     fun getAllTweets(): LiveData<List<Tweet>>

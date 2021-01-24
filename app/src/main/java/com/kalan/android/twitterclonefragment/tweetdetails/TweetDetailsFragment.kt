@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kalan.android.twitterclonefragment.R
+import com.kalan.android.twitterclonefragment.database.TwitterDatabase
 
 class TweetDetailsFragment : Fragment() {
     private lateinit var viewModel: TweetDetailsViewModel
@@ -24,15 +25,34 @@ class TweetDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModelFactory = TweetDetailsViewModelFactory(arguments?.getString("tweetName"))
+        val tweetDao = TwitterDatabase.getInstance(requireNotNull(this.activity)).tweetDao
+        viewModelFactory = TweetDetailsViewModelFactory(arguments?.getLong("tweetId"), tweetDao)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(TweetDetailsViewModel::class.java)
 //        val tweetNameString = arguments?.getString("tweetName")
 //        view.findViewById<TextView>(R.id.textViewContent).text = viewModel.tweetNameLiveData.value
 
-        viewModel.tweetNameLiveData.observe(viewLifecycleOwner, Observer {
-                newValue ->
-            view.findViewById<TextView>(R.id.textViewContent).text = newValue
-        })
+//        viewModel.tweetNameLiveData.observe(viewLifecycleOwner, Observer {
+//                newValue ->
+//            view.findViewById<TextView>(R.id.textViewContent).text = newValue
+//        })
+
+        val tweetId = arguments?.getLong("tweetId")
+
+//        viewModel.tweet.observe(viewLifecycleOwner, {
+//            view.findViewById<TextView>(R.id.textViewContent).text = it.text
+//        })
+//
+//        if(tweetId!=null){
+//            viewModel.loadTweetFromDb(tweetId)
+//        }
+
+        tweetId?.let {
+            viewModel.loadTweetFromDbLive(tweetId).observe(viewLifecycleOwner, {
+                it?.let {
+                    view.findViewById<TextView>(R.id.textViewContent).text = it.text
+                }
+            })
+        }
     }
 }
