@@ -7,7 +7,7 @@ import androidx.room.*
 interface TweetDao {
 
     //Create
-    @Insert
+    @Insert (onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(tweet: Tweet)
 
     //Read

@@ -77,5 +77,7 @@ class TweetsFragment : Fragment() {
 //            recyclerViewTweets.adapter?.notifyDataSetChanged()
             viewModel.clearData()
         }
+
+        viewModel.loadTweetsFromFirebaseToDb()
     }
 }

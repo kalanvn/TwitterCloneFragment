@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">week10</string>
+    <string name="app_name">Firebase</string>
     <string name="have_an_account_already">Have an account already?</string>
     <string name="create_account">Create Account</string>
     <string name="log_in">Log in</string>

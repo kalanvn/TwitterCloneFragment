@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Tweet (
-        @PrimaryKey(autoGenerate = true)
+        @PrimaryKey(/*autoGenerate = true*/)
         var tweetId: Long = 0L,
 
         var text: String = "",

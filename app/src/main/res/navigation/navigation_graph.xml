@@ -21,7 +21,11 @@
         android:id="@+id/createAccountFragment"
         android:name="com.kalan.android.twitterclonefragment.CreateAccountFragment"
         android:label="CreateAccountFragment"
-        tools:layout="@layout/fragment_createaccount"/>
+        tools:layout="@layout/fragment_createaccount">
+        <action
+            android:id="@+id/action_createAccountFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.kalan.android.twitterclonefragment.LoginFragment"
