@@ -5,7 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kalan.android.twitterclonefragment.database.Tweet
 import com.kalan.android.twitterclonefragment.model.TweetData
 
@@ -20,7 +22,7 @@ class TweetsAdapterDB (val tweetListItemClickListener: TweetDBListItemClickListe
 
     class TweetsViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView){
         val textViewListItem : TextView = listItemView.findViewById(R.id.textViewListItem)
-//        val imageViewListItem : ImageView = listItemView.findViewById(R.id.imageViewListItem)
+        val imageViewListItem : ImageView = listItemView.findViewById(R.id.imageViewListItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetsViewHolder {
@@ -38,6 +40,11 @@ class TweetsAdapterDB (val tweetListItemClickListener: TweetDBListItemClickListe
 //        holder.imageViewListItem.setOnClickListener {
 //            tweetListItemClickListener.imageViewListItemClickListener()
 //        }
+
+        val uri = dataSet[position].url?.toUri()?.buildUpon()?.scheme("https")?.build()
+        Glide.with(holder.itemView.context)
+            .load(uri)
+            .into(holder.imageViewListItem)
         holder.itemView.setOnClickListener {
             tweetListItemClickListener.listItemClickListener(dataSet[position])
         }

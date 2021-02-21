@@ -56,7 +56,8 @@ class TweetsViewModel (val tweetDao: TweetDao) : ViewModel() {
                         val hashMap = document.data
                         val tweet = Tweet(text = hashMap["text"] as String
                         , postedTime = hashMap["postedTime"] as Long
-                        , tweetId = hashMap["tweetId"] as Long)
+                        , tweetId = hashMap["tweetId"] as Long
+                        , url = hashMap["url"] as String?)
                         viewModelScope.launch {
                             withContext(Dispatchers.IO) {
                                 tweetDao.insert(tweet)

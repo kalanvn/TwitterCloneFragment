@@ -18,7 +18,7 @@ interface TweetDao {
     @Query("SELECT * from Tweet WHERE tweetId = :key")
     fun getLive(key: Long): LiveData<Tweet?>
 
-    @Query("SELECT * from Tweet ORDER BY tweetId DESC")
+    @Query("SELECT * from Tweet ORDER BY postedTime DESC")
     fun getAllTweets(): LiveData<List<Tweet>>
 
     @Query("SELECT * from Tweet ORDER BY tweetId DESC LIMIT 1")

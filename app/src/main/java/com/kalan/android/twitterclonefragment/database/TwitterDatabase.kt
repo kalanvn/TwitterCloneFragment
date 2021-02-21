@@ -2,15 +2,17 @@ package com.kalan.android.twitterclonefragment.database
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.RoomDatabase
 import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 //This class is to act as a database holder.
 //The class is abstract, because Room creates the implementation for you.
 //Supply the Tweet as the only item with the list of entities.
 //Set the version as 1**.** Whenever you change the schema, you'll have to increase the version number.
 //Set exportSchema to false, so as not to keep schema version history backups.
-@Database(entities = [Tweet::class], version = 1, exportSchema = false)
+@Database(entities = [Tweet::class], version = 2, exportSchema = false)
 abstract class TwitterDatabase: RoomDatabase() {
 
     abstract val tweetDao: TweetDao
@@ -34,11 +36,19 @@ abstract class TwitterDatabase: RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         TwitterDatabase::class.java,
-                        "twitter_database")
-                        .fallbackToDestructiveMigration()
+                        "twitter_database"
+                    )
+                        .addMigrations(MIGRATION_1_2)
+//                        .fallbackToDestructiveMigration()
                         .build()
                 }
                 return instance
+            }
+        }
+
+        private val MIGRATION_1_2: Migration = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE \"Tweet\" ADD COLUMN \"url\" TEXT")
             }
         }
     }

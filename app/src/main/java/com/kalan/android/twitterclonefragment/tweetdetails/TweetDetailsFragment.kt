@@ -1,15 +1,16 @@
 package com.kalan.android.twitterclonefragment.tweetdetails
 
 import android.os.Bundle
+import android.security.keystore.KeyProperties
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kalan.android.twitterclonefragment.R
 import com.kalan.android.twitterclonefragment.database.TwitterDatabase
+
 
 class TweetDetailsFragment : Fragment() {
     private lateinit var viewModel: TweetDetailsViewModel

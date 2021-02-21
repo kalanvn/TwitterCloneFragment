@@ -10,5 +10,7 @@ data class Tweet (
 
         var text: String = "",
 
-        var postedTime: Long = System.currentTimeMillis()
-        )
+        var postedTime: Long = System.currentTimeMillis(),
+
+        var url: String?
+)

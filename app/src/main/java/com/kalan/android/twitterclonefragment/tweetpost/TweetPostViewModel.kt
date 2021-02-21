@@ -7,6 +7,9 @@ import com.kalan.android.twitterclonefragment.database.TweetDao
 import kotlinx.coroutines.launch
 
 class TweetPostViewModel (val tweetDao: TweetDao): ViewModel() {
+
+//    var currentTweetIdInViewModel : Long? = null
+
     fun onPost(tweet: Tweet) {
 
         //Launches a new coroutine without blocking the current thread

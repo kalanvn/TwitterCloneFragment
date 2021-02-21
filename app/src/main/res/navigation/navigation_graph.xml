@@ -73,5 +73,19 @@
             app:destination="@id/tweetsFragment"
             app:popUpTo="@id/tweetsFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_tweetPostFragment_to_cameraXFragment"
+            app:destination="@id/cameraXFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraXFragment"
+        android:name="com.kalan.android.twitterclonefragment.camera.CameraXFragment"
+        android:label="CameraXFragment"
+        tools:layout="@layout/fragment_camerax">
+        <action
+            android:id="@+id/action_cameraXFragment_to_tweetPostFragment"
+            app:destination="@id/tweetPostFragment"
+            app:popUpTo="@id/tweetPostFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
