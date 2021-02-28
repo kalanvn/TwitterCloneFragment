@@ -53,7 +53,7 @@
         android:fontFamily="@font/roboto"
         android:text="@string/have_an_account_already"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/adViewStartFragment"
         app:layout_constraintStart_toStartOf="@id/buttonCreateAccount" />
 
     <Button
@@ -70,4 +70,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewAccountInfo"
         app:layout_constraintStart_toEndOf="@+id/textViewAccountInfo"
         app:layout_constraintTop_toTopOf="@+id/textViewAccountInfo" />
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewStartFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
 </androidx.constraintlayout.widget.ConstraintLayout>
